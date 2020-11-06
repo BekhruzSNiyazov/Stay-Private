@@ -1,5 +1,7 @@
-filename = input("Please, enter the name of the file you want to encrypt: ")
-number = int(input("Please, enter any pin code you'd like (you should remember it and it should not be too big): "))
+from sys import argv
+
+filename = argv[1]
+number = int(argv[2])
 
 contents = ""
 

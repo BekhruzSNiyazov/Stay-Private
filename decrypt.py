@@ -1,8 +1,7 @@
-from typing import ContextManager
+from sys import argv
 
-
-filename = input("Please, enter the name of the file you want to decrypt: ")
-number = int(input("Please, enter the pin code you should have remembered: "))
+filename = argv[1]
+number = int(argv[2])
 
 contents = ""
 
