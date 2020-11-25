@@ -1,19 +1,29 @@
-from sys import argv
+import sys
 
-filename = argv[1]
-number = int(argv[2])
+try:
+    filename = sys.argv[1]
+    number = int(sys.argv[2])
+except:
+    sys.exit("Usage: decrypt filename number")
 
 contents = ""
 
 try:
     with open(filename, "r") as file:
         contents = file.read()
-except: exit("Wrong file name was passed. Please, try again.")
+except:
+    sys.exit("Wrong file name was passed. Please, try again.")
+
+new_contents = ""
 
 try:    
-    with open(filename, "w") as file:
-        new_contents = ""
-        for char in contents:
-            new_contents += chr(ord(char)-number)
-        file.write(new_contents)
-except: exit("Wrond pin code was passed.")
+    new_contents = ""
+    for char in contents:
+        if char == "\n":
+            new_contents += "\n"
+        else:
+            new_contents += chr(ord(char)+number)
+except: sys.exit("Wrond pin code was passed.")
+
+with open(filename, "w") as file:
+    file.write(new_contents)
